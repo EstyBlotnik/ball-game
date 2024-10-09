@@ -1,12 +1,3 @@
-const boxes = document.querySelectorAll('.box');
-const columns = 12;
-const rows = 10;
-console.log(boxes);
-
-boxes.forEach((box, index) => {
-    console.log(`אינדקס: ${index}, אלמנט: `, box);
-});
-
 let matrix = [];
 let x = 9;
 let y = 2;
@@ -16,12 +7,13 @@ function startGame() {
         let arr = []
         for (j = 0; j < 12; ++j) {
             const div = document.getElementById("game-board");
-            // if (i == 0 || i == 9 || j == 0 || j == 11) {
-
-            // }
-            // else {
-            let html = `<div class="box" id="box${i}-${j}"></div>`;
-            // }
+            let html;
+            if ((i == 0&&j!=4) || (i == 9&&j!=4) || (j == 0&&i!=5) || (j == 11&&i!=5)) {
+                html = `<div class="box" id="box${i}-${j}" style="background-color: rgba(0, 0, 0, 0.733);"></div>`;
+            }
+            else {
+                html = `<div class="box" id="box${i}-${j}"></div>`;
+            }
             div.insertAdjacentHTML("beforeend", html);
             arr.push(false);
         }
